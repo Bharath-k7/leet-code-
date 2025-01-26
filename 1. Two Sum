@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+   const sorted = nums.map((num, index) => [num, index]).sort((a, b) => a[0] - b[0]);
+    let left = 0;
+    let right = nums.length - 1;
+
+    while(left < right && left != right){
+        const sum = sorted[left][0] + sorted[right][0];
+        if(target < sum) right -= 1;
+        else if(target > sum) left += 1;
+        else return ([sorted[left][1] ,sorted[right][1]])
+    }
+};
