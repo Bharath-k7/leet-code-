@@ -1,0 +1,28 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    const sorted = nums.sort((a, b) => a - b);
+    let i = 0, j = i + 1, k = sorted.length - 1, possibleSums = [];
+    let possibleKeys = [];
+    while(i < j && j < k){
+        while(j < k && j != k){
+            const sum = sorted[i] + sorted[j] + sorted[k];
+
+            if(sum === 0) {
+                const possibleSum = [sorted[i], sorted[j], sorted[k]]
+                if (!possibleKeys.includes(possibleSum.join(""))) {
+                    possibleSums.push(possibleSum);
+                    possibleKeys.push(possibleSum.join(""));
+                }
+            }
+            if(sum <= 0) j += 1;
+            if(sum > 0) k -= 1;
+        }
+        i += 1;
+        j = i + 1;
+        k = sorted.length - 1
+    }
+    return possibleSums;
+};
