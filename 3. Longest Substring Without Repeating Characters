@@ -7,13 +7,14 @@ var lengthOfLongestSubstring = function(s) {
     while(i < s.length){
         if(!chars.includes(s[i])){
             count += 1;
-            chars += s.slice(i, 1);
+            chars += s[i];
         }
         else{
             if(count > longestSubStr) longestSubStr = count;
-            chars = s.slice(i, 1);
-            count = 1;
+            chars = chars.slice(chars.indexOf(s[i]) + 1) + s[i];
+            count = chars.length;
         }
+        i++;
     }
     if(count > longestSubStr) longestSubStr = count;
     return longestSubStr;
