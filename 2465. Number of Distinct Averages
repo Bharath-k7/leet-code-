@@ -1,0 +1,16 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var distinctAverages = function(nums) {
+    const sortedNums = nums.sort((a, b) => a-b);
+    let left = 0, right = sortedNums.length - 1, distinctAverages = [];
+    while(left < right){
+        const average = (sortedNums[left] + sortedNums[right]) / 2;
+        if(!distinctAverages.includes(average)) 
+            distinctAverages.push(average);
+        left++;
+        right--;
+    }
+    return distinctAverages.length;
+};
