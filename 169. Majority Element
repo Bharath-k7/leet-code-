@@ -1,0 +1,20 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function(nums) {
+    let majorityElementCount = -Infinity, majorityElement;
+
+    nums.reduce((acc, num) => {
+        if(!acc[num]) acc[num] = 0;
+        acc[num] += 1
+
+        if(majorityElementCount < acc[num]) {
+            majorityElementCount = acc[num];
+            majorityElement = num;
+        }
+        return acc;
+    }, {})
+
+    return majorityElement;
+};
